@@ -1,7 +1,7 @@
 const images = [
-    "../assets/draw1.jpeg",
-    "../assets/draw2.jpeg",
-    "../assets/draw3.jpeg"
+    "./assets/draw1.jpeg",
+    "./assets/draw2.jpeg",
+    "./assets/draw3.jpeg"
 ];
 
 const image = document.querySelector("#draws");
