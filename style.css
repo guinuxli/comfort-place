@@ -1,14 +1,17 @@
 body {
-    background-color: #D1BE9C;
     margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, white 20%, cadetblue 80%);
+
     overflow-x: hidden; /* evita scroll horizontal em telas pequenas */
 }
 
 .welcome-text {
-    color: #000000;
+    color: rgb(0, 0, 0);
     display: flex;
     align-items: center;
     justify-content: center;
+    place-items: center;
     padding: 10px 15px;
 }
 
@@ -19,7 +22,7 @@ body {
 }
 
 .text {
-    color: #000000;
+    color: rgb(0, 0, 0);
     display: grid;
     place-items: center;
     gap: 5px;
@@ -41,7 +44,7 @@ body {
 .square {
     width: min(640px, 90vw);
     aspect-ratio: 4 / 3;
-    border: 2px solid black;
+    border: 2px solid rgb(10, 81, 135);
     border-radius: 7px;
 
     position: absolute;
@@ -83,12 +86,12 @@ body {
 
 #next,
 #previous {
-    background-color: #7EB77F;
+    background-color: #48cae4;
     color: black;
     border-radius: 5px;
     border: 0;
     height: 30px;
-    width: 80px;
+    width: 90px;
     font-size: clamp(0.75rem, 2.5vw, 1rem);
 }
 
@@ -113,8 +116,10 @@ body {
 
 .cassete-img {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    row-gap: 4px;
 
     position: absolute;
     top: 90%;
@@ -125,4 +130,116 @@ body {
 #cassete {
     width: clamp(70px, 18vw, 150px);
     height: clamp(70px, 18vw, 150px);
+    transition: transform 0.2s ease;
+}
+
+/* pulso sutil enquanto uma faixa está tocando */
+#cassete.playing {
+    animation: cassete-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes cassete-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #cassete.playing {
+        animation: none;
+    }
+}
+
+.now-playing-label {
+    font-size: clamp(0.55rem, 2vw, 0.7rem);
+    color: rgb(10, 81, 135);
+    text-align: center;
+    max-width: 150px;
+    line-height: 1.3;
+
+    opacity: 0;
+    transform: translateY(-2px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.now-playing-label.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.disclaimer-img {
+    splay: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 5%;
+    left: 94%;
+    transform: translate(-50%, -50%);
+}
+
+#disclaimer {
+    width: clamp(30px, 15vw, 20px);
+    height: clamp(30px, 15vw, 20px);
+    cursor: pointer;
+}
+
+/* ---------- Modal do disclaimer ---------- */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 100;
+}
+
+.modal-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-box {
+    position: relative;
+    background: white;
+    border: 2px solid rgb(10, 81, 135);
+    border-radius: 7px;
+    width: min(380px, 100%);
+    padding: 30px 24px 24px;
+    text-align: center;
+
+    transform: translateY(-12px);
+    transition: transform 0.25s ease;
+}
+
+.modal-overlay.visible .modal-box {
+    transform: translateY(0);
+}
+
+.modal-box p {
+    margin: 0;
+    font-size: clamp(0.8rem, 2.6vw, 0.95rem);
+    line-height: 1.5;
+    color: black;
+}
+
+#modal-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: #48cae4;
+    color: black;
+    border: 0;
+    border-radius: 5px;
+    width: 26px;
+    height: 26px;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
 }

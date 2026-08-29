@@ -9,7 +9,7 @@
 <body>
     <header>
         <div class="welcome-text">
-            <h1>Hello There!</h1>
+            <h1>Welcome back!</h1>
         </div>
     </header>
 
@@ -21,16 +21,24 @@
         </div>
     </main>
     <footer>
-        <audio id="song" src="./assets/rainy.ogg" loop></audio>
+        <audio id="song" src="./assets/rainy.ogg"></audio>
         <div class="square"></div>
+
         <div class="images">
             <img id="draws" src="./assets/draw2.jpeg" alt="Artwork 2 of 3">
         </div>
+
         <div class="cassete-img">
             <img id="cassete" src="./assets/cassete-removebg-preview.png" alt="cassete draw" style="cursor: pointer;">
+            <span id="now-playing" class="now-playing-label"></span>
         </div>
+
+        <div class="disclaimer-img">
+            <img id="disclaimer" src="./assets/disclaimer.png" alt="disclaimer symbol">
+        </div>
+
         <div class="footer-text">
-            <p>Art made by July and Gui</p>
+            <p>Art made by July & Gui</p>
             <p>© 2026 Guilherme Costa. All rights reserved.</p>
         </div>
 
@@ -39,6 +47,14 @@
             <button id="next">Next</button>
         </div>
     </footer>
+
+    <div class="modal-overlay" id="disclaimer-modal" role="dialog" aria-modal="true" aria-label="Disclaimer">
+        <div class="modal-box">
+            <button id="modal-close" aria-label="Close disclaimer">&times;</button>
+            <p>I do NOT earn any money with this. This is a hobby project! I'm using the Audius API to shuffles songs. Please, go support the original artists!</p>
+        </div>
+    </div>
+
     <script src="script.js" defer></script>
 </body>
 </html>
