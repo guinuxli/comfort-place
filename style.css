@@ -1,5 +1,7 @@
 body {
     background-color: #D1BE9C;
+    margin: 0;
+    overflow-x: hidden; /* evita scroll horizontal em telas pequenas */
 }
 
 .welcome-text {
@@ -7,6 +9,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 10px 15px;
+}
+
+.welcome-text h1 {
+    font-size: clamp(1.4rem, 6vw, 2.5rem);
+    text-align: center;
+    margin: 0;
 }
 
 .text {
@@ -19,15 +28,19 @@ body {
     top: 18%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    width: 90%;
+    text-align: center;
 }
 
 .text p {
     margin: 0;
+    font-size: clamp(0.85rem, 3vw, 1rem);
 }
 
 .square {
-    height: 480px;
-    width: 640px;
+    width: min(640px, 90vw);
+    aspect-ratio: 4 / 3;
     border: 2px solid black;
     border-radius: 7px;
 
@@ -40,39 +53,35 @@ body {
 .footer-text {
     display: grid;
     place-items: center;
+    gap: 10px;
 
     position: absolute;
     top: 95%;
     left: 50%;
     transform: translate(-50%, -50%);
-    gap: 10px;
+
+    width: 90%;
+    text-align: center;
 }
 
 .footer-text p {
     margin: 0;
+    font-size: clamp(0.65rem, 2.5vw, 0.9rem);
 }
 
 .buttons {
     display: flex;
     justify-content: center;
     align-items: center;
+    column-gap: 10px;
 
     position: absolute;
     top: 85%;
     left: 50%;
     transform: translate(-50%, -50%);
-    column-gap: 10px;
 }
 
-#next {
-    background-color: #7EB77F;
-    color: black;
-    border-radius: 5px;
-    border: 0;
-    height: 30px;
-    width: 80px;
-}
-
+#next,
 #previous {
     background-color: #7EB77F;
     color: black;
@@ -80,23 +89,26 @@ body {
     border: 0;
     height: 30px;
     width: 80px;
+    font-size: clamp(0.75rem, 2.5vw, 1rem);
 }
 
 .images {
-    height: 480px;
-    width: 640px;
+    width: min(640px, 90vw);
+    aspect-ratio: 4 / 3;
     border: 2px solid black;
     border-radius: 7px;
 
     position: absolute;
-    top: 55.2%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 #draws {
-    width: 640px;
-    height: 480px;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
 }
 
 .cassete-img {
@@ -111,6 +123,6 @@ body {
 }
 
 #cassete {
-    height: 150px;
-    width: 150px;
+    width: clamp(70px, 18vw, 150px);
+    height: clamp(70px, 18vw, 150px);
 }
