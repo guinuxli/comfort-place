@@ -14,7 +14,7 @@ const casseteImage = document.getElementById("cassete");
 const song = document.getElementById("song");
 const nowPlayingLabel = document.getElementById("now-playing");
 
-let currentImage = 1;
+let currentImage = 0;
 
 function showImage(index) {
     currentImage = (index + images.length) % images.length;
